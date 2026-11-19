@@ -181,3 +181,5 @@ python manage.py test apps.inventory apps.purchasing apps.sales
 
 ## 📄 License
 Proprietary — Developed for Startup Incense & Fragrance Manufacturing ERP Operations.
+#   m d p _ a p p  
+ 
