@@ -1,10 +1,20 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
     SpectacularSwaggerView
 )
+
+def health_check(request):
+    return JsonResponse({
+        'status': 'online',
+        'app': 'MDP Aroma ERP Backend API',
+        'version': '1.0.0',
+        'api_root': '/api/v1/',
+        'docs': '/api/v1/docs/',
+    })
 
 api_v1_patterns = [
     # Accounts & RBAC
@@ -53,6 +63,7 @@ api_v1_patterns = [
 ]
 
 urlpatterns = [
+    path('', health_check, name='health-check'),
     path('admin/', admin.site.urls),
     path('api/v1/', include((api_v1_patterns, 'api_v1'))),
 ]
